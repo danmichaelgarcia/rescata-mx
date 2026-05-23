@@ -431,6 +431,357 @@
     .impact-grid { grid-template-columns: 1fr 1fr; }
     .registro-inner { grid-template-columns: 1fr; }
   }
+
+  /* ── DEMO INTERACTIVA ────────────────────────────────────────── */
+  #demo {
+    padding: 6rem 2.5rem;
+    background: #0f2419;
+    position: relative; overflow: hidden;
+  }
+  #demo::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(82,183,136,0.08) 0%, transparent 70%);
+  }
+  #demo .section-tag { color: var(--green-light); }
+  #demo h2 { color: var(--white); }
+  #demo .section-header p { color: rgba(255,255,255,0.55); }
+
+  .demo-shell {
+    max-width: 1100px; margin: 3rem auto 0;
+    display: grid; grid-template-columns: 280px 1fr;
+    gap: 0; border-radius: 20px; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+    min-height: 520px;
+  }
+
+  /* Sidebar steps */
+  .demo-sidebar {
+    background: rgba(255,255,255,0.04);
+    border-right: 1px solid rgba(255,255,255,0.08);
+    padding: 1.5rem 0;
+  }
+  .demo-sidebar-title {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(255,255,255,0.3);
+    padding: 0 1.25rem; margin-bottom: 1rem;
+  }
+  .demo-step-btn {
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 0.85rem 1.25rem; cursor: pointer;
+    transition: background 0.2s; border: none;
+    background: transparent; width: 100%; text-align: left;
+    position: relative;
+  }
+  .demo-step-btn:hover { background: rgba(255,255,255,0.05); }
+  .demo-step-btn.active { background: rgba(82,183,136,0.12); }
+  .demo-step-btn.active::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px; background: var(--green-bright); border-radius: 0 2px 2px 0;
+  }
+  .demo-step-icon {
+    width: 34px; height: 34px; border-radius: 8px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; background: rgba(255,255,255,0.07);
+    transition: background 0.2s;
+  }
+  .demo-step-btn.active .demo-step-icon { background: rgba(82,183,136,0.2); }
+  .demo-step-btn.done .demo-step-icon { background: rgba(82,183,136,0.15); }
+  .demo-step-btn.done .demo-step-icon::after { content: '✓'; font-size: 0.85rem; color: var(--green-bright); }
+  .demo-step-info { }
+  .demo-step-label {
+    font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.85);
+    display: block; line-height: 1.3;
+  }
+  .demo-step-btn.active .demo-step-label { color: var(--white); }
+  .demo-step-sub {
+    font-size: 0.7rem; color: rgba(255,255,255,0.35);
+    display: block; margin-top: 1px;
+  }
+  .demo-divider {
+    height: 1px; background: rgba(255,255,255,0.06);
+    margin: 0.5rem 1.25rem;
+  }
+
+  /* Main panel */
+  .demo-panel {
+    background: #121f17;
+    padding: 0; position: relative; overflow: hidden;
+  }
+
+  /* Panel header bar */
+  .demo-panel-bar {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(0,0,0,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .bar-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .bar-title {
+    font-size: 0.75rem; color: rgba(255,255,255,0.4);
+    margin-left: 0.5rem; font-family: monospace;
+  }
+  .bar-status {
+    margin-left: auto; display: flex; align-items: center; gap: 0.4rem;
+    font-size: 0.7rem; color: var(--green-bright); font-weight: 600;
+  }
+  .bar-status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-bright); animation: pulse 2s infinite; }
+
+  /* Scenes */
+  .demo-scene {
+    display: none; padding: 2rem 2rem 1.5rem;
+    animation: sceneFadeIn 0.4s ease;
+  }
+  .demo-scene.active { display: block; }
+  @keyframes sceneFadeIn { from { opacity:0; transform: translateX(12px); } to { opacity:1; transform: translateX(0); } }
+
+  .scene-eyebrow {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--green-bright); margin-bottom: 0.4rem;
+  }
+  .scene-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 700; color: var(--white);
+    margin-bottom: 0.5rem; line-height: 1.2;
+  }
+  .scene-desc { font-size: 0.875rem; color: rgba(255,255,255,0.55); margin-bottom: 1.5rem; line-height: 1.6; }
+
+  /* ── SCENE 1: Upload form sim ── */
+  .upload-sim {
+    background: rgba(255,255,255,0.04); border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.08); padding: 1.25rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .sim-field { }
+  .sim-label { font-size: 0.65rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.35rem; }
+  .sim-value {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 7px; padding: 0.5rem 0.75rem;
+    font-size: 0.85rem; color: var(--white);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .sim-value.typing::after {
+    content: '|'; animation: blink 0.8s infinite; color: var(--green-bright);
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  .sim-photo {
+    grid-column: span 2;
+    background: rgba(82,183,136,0.08); border: 2px dashed rgba(82,183,136,0.3);
+    border-radius: 10px; padding: 1.25rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .sim-photo-icon { font-size: 2rem; }
+  .sim-photo-info { }
+  .sim-photo-name { font-size: 0.8rem; color: var(--white); font-weight: 600; }
+  .sim-photo-meta { font-size: 0.7rem; color: rgba(255,255,255,0.4); }
+  .sim-badge {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    background: rgba(82,183,136,0.15); border: 1px solid rgba(82,183,136,0.3);
+    color: var(--green-bright); font-size: 0.7rem; font-weight: 600;
+    padding: 0.25rem 0.6rem; border-radius: 999px; margin-top: 0.5rem;
+  }
+  .timer-bar {
+    grid-column: span 2; margin-top: 0.25rem;
+  }
+  .timer-label { font-size: 0.7rem; color: rgba(255,255,255,0.4); margin-bottom: 0.35rem; display: flex; justify-content: space-between; }
+  .timer-track {
+    height: 6px; background: rgba(255,255,255,0.08); border-radius: 999px; overflow: hidden;
+  }
+  .timer-fill {
+    height: 100%; background: linear-gradient(90deg, var(--green-mid), var(--green-bright));
+    border-radius: 999px; width: 0%;
+    transition: width 1.8s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  /* ── SCENE 2: AI matching ── */
+  .ai-screen {
+    background: rgba(255,255,255,0.03); border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.08); overflow: hidden;
+  }
+  .ai-header {
+    padding: 0.75rem 1rem; background: rgba(0,0,0,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .ai-pulse {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: rgba(82,183,136,0.2); display: flex; align-items: center;
+    justify-content: center; font-size: 0.85rem;
+    box-shadow: 0 0 0 0 rgba(82,183,136,0.4);
+    animation: aiPulse 2s infinite;
+  }
+  @keyframes aiPulse {
+    0% { box-shadow: 0 0 0 0 rgba(82,183,136,0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(82,183,136,0); }
+    100% { box-shadow: 0 0 0 0 rgba(82,183,136,0); }
+  }
+  .ai-header-text { font-size: 0.8rem; color: var(--white); font-weight: 600; }
+  .ai-header-sub { font-size: 0.7rem; color: rgba(255,255,255,0.4); }
+  .ai-log {
+    padding: 0.75rem 1rem; font-family: monospace; font-size: 0.75rem;
+    display: flex; flex-direction: column; gap: 0.4rem; min-height: 140px;
+  }
+  .ai-log-line {
+    display: flex; gap: 0.75rem; opacity: 0;
+    animation: logAppear 0.3s ease forwards;
+  }
+  .log-time { color: rgba(255,255,255,0.25); flex-shrink: 0; }
+  .log-tag { flex-shrink: 0; }
+  .log-tag.info { color: #60a5fa; }
+  .log-tag.success { color: var(--green-bright); }
+  .log-tag.warn { color: var(--amber); }
+  .log-msg { color: rgba(255,255,255,0.7); }
+  @keyframes logAppear { from{opacity:0;transform:translateY(4px)} to{opacity:1;transform:translateY(0)} }
+
+  .ai-result {
+    margin: 0.75rem 1rem 1rem;
+    background: rgba(82,183,136,0.08); border: 1px solid rgba(82,183,136,0.2);
+    border-radius: 10px; padding: 0.85rem 1rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .ai-result-icon { font-size: 1.75rem; }
+  .ai-result-name { font-size: 0.9rem; font-weight: 700; color: var(--white); }
+  .ai-result-meta { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
+  .ai-chips { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+  .ai-chip {
+    font-size: 0.65rem; font-weight: 600;
+    padding: 0.2rem 0.55rem; border-radius: 999px;
+    background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6);
+  }
+  .ai-chip.green { background: rgba(82,183,136,0.15); color: var(--green-bright); }
+
+  /* ── SCENE 3: Route map ── */
+  .route-container {
+    display: grid; grid-template-columns: 1fr 200px; gap: 1rem;
+  }
+  .route-map-sim {
+    background: linear-gradient(135deg, #1a3a2a, #0f2419);
+    border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);
+    position: relative; height: 220px; overflow: hidden;
+  }
+  .route-map-grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+  .route-path {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  }
+  .route-marker {
+    position: absolute; display: flex; flex-direction: column; align-items: center; gap: 2px;
+  }
+  .route-marker-dot {
+    width: 14px; height: 14px; border-radius: 50%; border: 2px solid;
+    display: flex; align-items: center; justify-content: center; font-size: 0.5rem;
+  }
+  .route-marker-label {
+    font-size: 0.6rem; font-weight: 600; color: rgba(255,255,255,0.8);
+    background: rgba(0,0,0,0.5); padding: 1px 5px; border-radius: 4px; white-space: nowrap;
+  }
+  .route-stats { display: flex; flex-direction: column; gap: 0.75rem; }
+  .route-stat-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px; padding: 0.75rem;
+  }
+  .route-stat-label { font-size: 0.65rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.05em; }
+  .route-stat-val { font-size: 1.3rem; font-weight: 700; color: var(--white); margin-top: 0.2rem; }
+  .route-stat-val.green { color: var(--green-bright); }
+  .route-stat-val.amber { color: var(--amber); }
+
+  .qr-section {
+    margin-top: 1rem;
+    background: rgba(255,255,255,0.04); border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 0.75rem 1rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .qr-box {
+    width: 52px; height: 52px; background: var(--white); border-radius: 6px;
+    display: grid; grid-template-columns: repeat(5,1fr); gap: 2px; padding: 4px; flex-shrink: 0;
+  }
+  .qr-cell { border-radius: 1px; }
+  .qr-info { }
+  .qr-title { font-size: 0.8rem; font-weight: 600; color: var(--white); }
+  .qr-meta { font-size: 0.7rem; color: rgba(255,255,255,0.4); margin-top: 2px; }
+
+  /* ── SCENE 4: Dashboard ── */
+  .dash-grid {
+    display: grid; grid-template-columns: repeat(2,1fr); gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .dash-card {
+    background: rgba(255,255,255,0.05); border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.08); padding: 1rem;
+    position: relative; overflow: hidden;
+  }
+  .dash-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 3px; background: var(--green-mid);
+  }
+  .dash-card.amber-accent::after { background: var(--amber); }
+  .dash-card.blue-accent::after { background: #60a5fa; }
+  .dash-card.purple-accent::after { background: #a78bfa; }
+  .dash-label { font-size: 0.65rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.07em; }
+  .dash-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 900; color: var(--white);
+    line-height: 1; margin: 0.3rem 0 0.2rem;
+  }
+  .dash-val.counting { color: var(--green-light); }
+  .dash-change { font-size: 0.7rem; color: var(--green-bright); font-weight: 600; }
+  .dash-chart {
+    height: 40px; display: flex; align-items: flex-end; gap: 3px; margin-top: 0.75rem;
+  }
+  .dash-bar {
+    flex: 1; border-radius: 3px 3px 0 0; min-height: 4px;
+    background: rgba(82,183,136,0.3); transition: height 1s ease;
+  }
+  .dash-bar.highlight { background: var(--green-bright); }
+
+  .dash-notification {
+    background: rgba(82,183,136,0.1); border: 1px solid rgba(82,183,136,0.25);
+    border-radius: 10px; padding: 0.75rem 1rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .dash-notif-icon { font-size: 1.25rem; flex-shrink: 0; }
+  .dash-notif-text { font-size: 0.8rem; color: rgba(255,255,255,0.8); line-height: 1.5; }
+  .dash-notif-text strong { color: var(--white); }
+
+  /* Nav button */
+  .demo-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 2rem 1.25rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .demo-nav-btn {
+    display: flex; align-items: center; gap: 0.5rem;
+    background: transparent; border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.7); font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem; font-weight: 500; padding: 0.5rem 1rem;
+    border-radius: 8px; cursor: pointer; transition: all 0.2s;
+  }
+  .demo-nav-btn:hover:not(:disabled) { border-color: var(--green-bright); color: var(--green-bright); }
+  .demo-nav-btn:disabled { opacity: 0.25; cursor: not-allowed; }
+  .demo-nav-btn.primary {
+    background: var(--green-mid); border-color: var(--green-mid); color: var(--white); font-weight: 600;
+  }
+  .demo-nav-btn.primary:hover { background: var(--green-bright); border-color: var(--green-bright); }
+  .demo-progress {
+    font-size: 0.75rem; color: rgba(255,255,255,0.35); font-family: monospace;
+  }
+
+  @media (max-width: 900px) {
+    .demo-shell { grid-template-columns: 1fr; min-height: auto; }
+    .demo-sidebar { display: flex; overflow-x: auto; padding: 0.75rem; gap: 0.5rem; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .demo-step-btn { flex-direction: column; text-align: center; min-width: 80px; padding: 0.6rem; border-radius: 8px; }
+    .demo-step-btn.active::before { top: 0; left: 0; right: 0; bottom: auto; width: auto; height: 3px; border-radius: 0; }
+    .route-container { grid-template-columns: 1fr; }
+    .dash-grid { grid-template-columns: repeat(2,1fr); }
+    .upload-sim { grid-template-columns: 1fr; }
+    .sim-photo, .timer-bar { grid-column: span 1; }
+  }
+
 </style>
 </head>
 <body>
@@ -697,6 +1048,250 @@
   </div>
 </section>
 
+
+<!-- DEMO INTERACTIVA -->
+<section id="demo">
+  <div class="section-header reveal">
+    <span class="section-tag">Demo en vivo</span>
+    <h2>Mira cómo funciona — en tiempo real</h2>
+    <p>Simula el flujo completo: desde que un supermercado publica un excedente hasta que el impacto queda documentado.</p>
+  </div>
+
+  <div class="demo-shell reveal">
+    <!-- Sidebar -->
+    <div class="demo-sidebar">
+      <div class="demo-sidebar-title">Flujo del proceso</div>
+
+      <button class="demo-step-btn active" onclick="goToScene(0)" id="sbtn-0">
+        <div class="demo-step-icon" id="sicon-0">📦</div>
+        <div class="demo-step-info">
+          <span class="demo-step-label">Publicar excedente</span>
+          <span class="demo-step-sub">Donante · &lt;2 min</span>
+        </div>
+      </button>
+
+      <div class="demo-divider"></div>
+
+      <button class="demo-step-btn" onclick="goToScene(1)" id="sbtn-1">
+        <div class="demo-step-icon" id="sicon-1">🤖</div>
+        <div class="demo-step-info">
+          <span class="demo-step-label">IA asigna receptor</span>
+          <span class="demo-step-sub">Motor de matching</span>
+        </div>
+      </button>
+
+      <div class="demo-divider"></div>
+
+      <button class="demo-step-btn" onclick="goToScene(2)" id="sbtn-2">
+        <div class="demo-step-icon" id="sicon-2">🚚</div>
+        <div class="demo-step-info">
+          <span class="demo-step-label">Ruta + trazabilidad</span>
+          <span class="demo-step-sub">Logística · QR</span>
+        </div>
+      </button>
+
+      <div class="demo-divider"></div>
+
+      <button class="demo-step-btn" onclick="goToScene(3)" id="sbtn-3">
+        <div class="demo-step-icon" id="sicon-3">📊</div>
+        <div class="demo-step-info">
+          <span class="demo-step-label">Dashboard de impacto</span>
+          <span class="demo-step-sub">Donante · RSE</span>
+        </div>
+      </button>
+    </div>
+
+    <!-- Main panel -->
+    <div class="demo-panel">
+      <div class="demo-panel-bar">
+        <div class="bar-dot" style="background:#ff5f57"></div>
+        <div class="bar-dot" style="background:#ffbd2e"></div>
+        <div class="bar-dot" style="background:#28ca41"></div>
+        <span class="bar-title">rescata.mx · simulador de flujo</span>
+        <div class="bar-status"><div class="bar-status-dot"></div> EN VIVO</div>
+      </div>
+
+      <!-- SCENE 0: Publicar excedente -->
+      <div class="demo-scene active" id="scene-0">
+        <div class="scene-eyebrow">Paso 1 de 4 · Donante</div>
+        <div class="scene-title">Supermercado publica excedente</div>
+        <div class="scene-desc">Marta, gerente de La Comer Pedregal, tiene 48 kg de pan artesanal con vencimiento a las 8pm de hoy. Abre Rescata.mx desde su tablet y llena el formulario en menos de 2 minutos.</div>
+        <div class="upload-sim">
+          <div class="sim-field">
+            <div class="sim-label">Tipo de alimento</div>
+            <div class="sim-value">🥖 Pan artesanal</div>
+          </div>
+          <div class="sim-field">
+            <div class="sim-label">Cantidad</div>
+            <div class="sim-value">48 kg · ~320 piezas</div>
+          </div>
+          <div class="sim-field">
+            <div class="sim-label">Vence</div>
+            <div class="sim-value sim-value-vence">⏰ Hoy 20:00 hrs</div>
+          </div>
+          <div class="sim-field">
+            <div class="sim-label">Temperatura</div>
+            <div class="sim-value">🌡️ Ambiente · 22°C</div>
+          </div>
+          <div class="sim-photo">
+            <div class="sim-photo-icon">📸</div>
+            <div class="sim-photo-info">
+              <div class="sim-photo-name">pan_excedente_060526.jpg · 2.1MB</div>
+              <div class="sim-photo-meta">Foto cargada · validación sanitaria automática</div>
+              <div class="sim-badge">✓ Apto para donación — Checklist 8/8</div>
+            </div>
+          </div>
+          <div class="timer-bar">
+            <div class="timer-label">
+              <span>Tiempo de publicación</span>
+              <span id="timer-val">0s</span>
+            </div>
+            <div class="timer-track"><div class="timer-fill" id="timer-fill"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENE 1: IA matching -->
+      <div class="demo-scene" id="scene-1">
+        <div class="scene-eyebrow">Paso 2 de 4 · Motor de IA</div>
+        <div class="scene-title">La IA analiza y asigna en segundos</div>
+        <div class="scene-desc">El sistema evalúa distancia, capacidad, urgencia, temperatura y predicción de demanda para identificar al receptor óptimo.</div>
+        <div class="ai-screen">
+          <div class="ai-header">
+            <div class="ai-pulse">🧠</div>
+            <div>
+              <div class="ai-header-text">Motor de matching — rescata.mx/api/v1</div>
+              <div class="ai-header-sub">Procesando lote #RX-20260522-0847</div>
+            </div>
+          </div>
+          <div class="ai-log" id="ai-log"></div>
+          <div class="ai-result" id="ai-result" style="display:none">
+            <div class="ai-result-icon">🏪</div>
+            <div>
+              <div class="ai-result-name">Banco de Alimentos de la Ciudad de México</div>
+              <div class="ai-result-meta">Colonia del Valle · 2.3 km · Capacidad disponible: 120 kg</div>
+              <div class="ai-chips">
+                <span class="ai-chip green">✓ Match 94%</span>
+                <span class="ai-chip green">✓ Ruta libre</span>
+                <span class="ai-chip">Acepta panadería</span>
+                <span class="ai-chip">Recolección &lt;1hr</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENE 2: Ruta + QR -->
+      <div class="demo-scene" id="scene-2">
+        <div class="scene-eyebrow">Paso 3 de 4 · Logística</div>
+        <div class="scene-title">Ruta optimizada + trazabilidad por QR</div>
+        <div class="scene-desc">El transportista recibe la ruta en su app. Cada punto de la cadena escanea el QR — el lote queda documentado legalmente en cada transferencia.</div>
+        <div class="route-container">
+          <div class="route-map-sim">
+            <div class="route-map-grid"></div>
+            <svg style="position:absolute;top:0;left:0;width:100%;height:100%" viewBox="0 0 400 220">
+              <defs>
+                <marker id="arrowhead" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto">
+                  <polygon points="0 0, 6 2, 0 4" fill="rgba(82,183,136,0.8)"/>
+                </marker>
+              </defs>
+              <path d="M80 80 Q160 60 200 110 Q240 160 320 140"
+                stroke="rgba(82,183,136,0.6)" stroke-width="2.5" fill="none"
+                stroke-dasharray="8 4" marker-end="url(#arrowhead)"
+                style="stroke-dashoffset:200;animation:drawRoute 2s ease forwards 0.3s">
+              </path>
+              <style>
+                @keyframes drawRoute{to{stroke-dashoffset:0}}
+              </style>
+            </svg>
+            <!-- Markers -->
+            <div class="route-marker" style="top:28%;left:14%">
+              <div class="route-marker-dot" style="background:rgba(244,162,97,0.3);border-color:var(--amber)">🏪</div>
+              <div class="route-marker-label">La Comer · Origen</div>
+            </div>
+            <div class="route-marker" style="top:52%;left:42%">
+              <div class="route-marker-dot" style="background:rgba(82,183,136,0.2);border-color:var(--green-bright)">🚚</div>
+              <div class="route-marker-label">Transportista en ruta</div>
+            </div>
+            <div class="route-marker" style="top:44%;left:72%">
+              <div class="route-marker-dot" style="background:rgba(96,165,250,0.2);border-color:#60a5fa">🏪</div>
+              <div class="route-marker-label">Banco Alimentos · Destino</div>
+            </div>
+            <div style="position:absolute;bottom:8px;left:10px;font-size:0.65rem;color:rgba(255,255,255,0.4)">CDMX · Tiempo estimado: 28 min</div>
+          </div>
+          <div class="route-stats">
+            <div class="route-stat-card">
+              <div class="route-stat-label">Distancia</div>
+              <div class="route-stat-val amber">2.3 km</div>
+            </div>
+            <div class="route-stat-card">
+              <div class="route-stat-label">Tiempo estimado</div>
+              <div class="route-stat-val">28 min</div>
+            </div>
+            <div class="route-stat-card">
+              <div class="route-stat-label">Estado del lote</div>
+              <div class="route-stat-val green">En ruta</div>
+            </div>
+          </div>
+        </div>
+        <div class="qr-section">
+          <div class="qr-box" id="qr-box"></div>
+          <div class="qr-info">
+            <div class="qr-title">QR de trazabilidad · Lote #RX-20260522-0847</div>
+            <div class="qr-meta">La Comer Pedregal → Banco de Alimentos CDMX · 48 kg pan · Apto para consumo · 22/05/2026</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENE 3: Dashboard -->
+      <div class="demo-scene" id="scene-3">
+        <div class="scene-eyebrow">Paso 4 de 4 · Donante · RSE</div>
+        <div class="scene-title">Impacto documentado — reporte descargable</div>
+        <div class="scene-desc">Marta recibe su reporte automático 30 minutos después de la entrega. Su área de RSE lo descarga directamente para sus reportes corporativos.</div>
+        <div class="dash-grid">
+          <div class="dash-card">
+            <div class="dash-label">Kg rescatados hoy</div>
+            <div class="dash-val counting" id="d-kg">0</div>
+            <div class="dash-change">↑ +48 kg este evento</div>
+            <div class="dash-chart" id="chart-kg"></div>
+          </div>
+          <div class="dash-card amber-accent">
+            <div class="dash-label">Ahorro en merma</div>
+            <div class="dash-val counting" id="d-ahorro">$0</div>
+            <div class="dash-change">↑ vs costo de disposición</div>
+            <div class="dash-chart" id="chart-ahorro"></div>
+          </div>
+          <div class="dash-card blue-accent">
+            <div class="dash-label">CO₂e evitado</div>
+            <div class="dash-val counting" id="d-co2">0 kg</div>
+            <div class="dash-change">≈ 12 autos fuera de circulación 1 día</div>
+            <div class="dash-chart" id="chart-co2"></div>
+          </div>
+          <div class="dash-card purple-accent">
+            <div class="dash-label">Raciones equivalentes</div>
+            <div class="dash-val counting" id="d-raciones">0</div>
+            <div class="dash-change">↑ familias beneficiadas</div>
+            <div class="dash-chart" id="chart-raciones"></div>
+          </div>
+        </div>
+        <div class="dash-notification">
+          <div class="dash-notif-icon">🌱</div>
+          <div class="dash-notif-text">
+            <strong>Certificado de donación generado.</strong> Lote #RX-20260522-0847 entregado exitosamente al Banco de Alimentos CDMX · 22/05/2026 18:47 hrs. Documento disponible para descarga en tu perfil.
+          </div>
+        </div>
+      </div>
+
+      <!-- Nav buttons -->
+      <div class="demo-nav">
+        <button class="demo-nav-btn" id="btn-prev" onclick="prevScene()" disabled>← Anterior</button>
+        <div class="demo-progress" id="demo-progress">1 / 4</div>
+        <button class="demo-nav-btn primary" id="btn-next" onclick="nextScene()">Siguiente →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- TESTIMONIOS / VALIDACIÓN -->
 <section id="testimonios">
   <div class="section-header reveal">
@@ -878,6 +1473,160 @@
     }
   }, { threshold: 0.3 });
   counterObserver.observe(probSection);
+
+  // ── DEMO INTERACTIVA ─────────────────────────────────────────
+  let currentScene = 0;
+  const TOTAL_SCENES = 4;
+
+  // Build QR box
+  function buildQR() {
+    const box = document.getElementById('qr-box');
+    if (!box || box.children.length > 0) return;
+    const pattern = [1,1,1,0,1,1,0,1,0,1,1,1,1,0,0,0,1,0,1,1,1,0,0,1,0];
+    pattern.forEach(v => {
+      const c = document.createElement('div');
+      c.className = 'qr-cell';
+      c.style.background = v ? '#1a1a1a' : 'white';
+      box.appendChild(c);
+    });
+  }
+
+  // Build mini charts
+  function buildChart(id, color, values) {
+    const el = document.getElementById(id);
+    if (!el || el.children.length > 0) return;
+    const max = Math.max(...values);
+    values.forEach((v, i) => {
+      const bar = document.createElement('div');
+      bar.className = 'dash-bar' + (i === values.length-1 ? ' highlight' : '');
+      bar.style.height = Math.max(8, (v/max)*100) + '%';
+      bar.style.background = i === values.length-1 ? color : 'rgba(255,255,255,0.12)';
+      el.appendChild(bar);
+    });
+  }
+
+  // Animated number counter
+  function countUp(id, target, prefix='', suffix='', duration=1400) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const start = performance.now();
+    const update = (now) => {
+      const p = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1-p, 3);
+      const val = Math.round(target * ease);
+      el.textContent = prefix + val.toLocaleString('es-MX') + suffix;
+      if (p < 1) requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+  }
+
+  // AI log lines
+  const AI_LOGS = [
+    { delay: 0,    tag: 'INFO',    cls: 'info',    msg: 'Lote recibido · 48 kg · pan artesanal · temp 22°C' },
+    { delay: 400,  tag: 'INFO',    cls: 'info',    msg: 'Checklist sanitario: 8/8 ✓  Apto para donación' },
+    { delay: 900,  tag: 'INFO',    cls: 'info',    msg: 'Buscando receptores en radio 5km...' },
+    { delay: 1400, tag: 'INFO',    cls: 'info',    msg: 'Evaluando 7 candidatos por capacidad y ruta' },
+    { delay: 1900, tag: 'WARN',    cls: 'warn',    msg: 'Candidato #3 descartado — capacidad insuficiente' },
+    { delay: 2300, tag: 'SUCCESS', cls: 'success', msg: 'Match óptimo: Banco Alimentos CDMX · score 94%' },
+    { delay: 2700, tag: 'SUCCESS', cls: 'success', msg: 'Notificación enviada al receptor ✓' },
+    { delay: 3000, tag: 'SUCCESS', cls: 'success', msg: 'Transportista asignado · ETA 28 min ✓' },
+  ];
+
+  function runAILog() {
+    const logEl = document.getElementById('ai-log');
+    const resultEl = document.getElementById('ai-result');
+    if (!logEl) return;
+    logEl.innerHTML = '';
+    if (resultEl) resultEl.style.display = 'none';
+
+    const now = new Date();
+    AI_LOGS.forEach(({ delay, tag, cls, msg }) => {
+      setTimeout(() => {
+        const line = document.createElement('div');
+        line.className = 'ai-log-line';
+        const h = String(now.getHours()).padStart(2,'0');
+        const m = String(now.getMinutes()).padStart(2,'0');
+        const s = String(now.getSeconds() + Math.floor(delay/1000)).padStart(2,'0');
+        line.innerHTML = `<span class="log-time">${h}:${m}:${s}</span><span class="log-tag ${cls}">[${tag}]</span><span class="log-msg">${msg}</span>`;
+        line.style.animationDelay = '0s';
+        logEl.appendChild(line);
+        logEl.scrollTop = logEl.scrollHeight;
+      }, delay);
+    });
+    setTimeout(() => { if (resultEl) resultEl.style.display = 'flex'; }, 3300);
+  }
+
+  function runTimerBar() {
+    const fill = document.getElementById('timer-fill');
+    const val = document.getElementById('timer-val');
+    if (!fill) return;
+    fill.style.width = '0%';
+    let s = 0;
+    const iv = setInterval(() => {
+      s++;
+      const pct = Math.min(s / 112 * 100, 100);
+      fill.style.width = pct + '%';
+      if (val) val.textContent = s + 's';
+      if (s >= 112) clearInterval(iv);
+    }, 1000);
+  }
+
+  function initScene(idx) {
+    if (idx === 0) setTimeout(runTimerBar, 400);
+    if (idx === 1) setTimeout(runAILog, 300);
+    if (idx === 2) buildQR();
+    if (idx === 3) {
+      buildChart('chart-kg',      '#52b788', [12,18,24,30,38,44,48]);
+      buildChart('chart-ahorro',  '#f4a261', [80,120,160,200,260,300,336]);
+      buildChart('chart-co2',     '#60a5fa', [8,14,20,26,34,40,46]);
+      buildChart('chart-raciones','#a78bfa', [30,50,70,100,130,160,192]);
+      setTimeout(() => {
+        countUp('d-kg', 1240, '', ' kg');
+        countUp('d-ahorro', 8680, '$', '');
+        countUp('d-co2', 890, '', ' kg');
+        countUp('d-raciones', 3720, '', '');
+      }, 300);
+    }
+  }
+
+  function goToScene(idx) {
+    // hide all scenes
+    document.querySelectorAll('.demo-scene').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.demo-step-btn').forEach((b,i) => {
+      b.classList.remove('active');
+      if (i < idx) b.classList.add('done');
+      else b.classList.remove('done');
+    });
+
+    // show target
+    const scene = document.getElementById('scene-' + idx);
+    if (scene) scene.classList.add('active');
+    const btn = document.getElementById('sbtn-' + idx);
+    if (btn) { btn.classList.add('active'); btn.classList.remove('done'); }
+
+    currentScene = idx;
+
+    // update nav
+    document.getElementById('btn-prev').disabled = idx === 0;
+    const nextBtn = document.getElementById('btn-next');
+    if (idx === TOTAL_SCENES - 1) {
+      nextBtn.textContent = '↩ Reiniciar demo';
+      nextBtn.onclick = () => goToScene(0);
+    } else {
+      nextBtn.textContent = 'Siguiente →';
+      nextBtn.onclick = nextScene;
+    }
+    document.getElementById('demo-progress').textContent = (idx+1) + ' / ' + TOTAL_SCENES;
+
+    initScene(idx);
+  }
+
+  function nextScene() { if (currentScene < TOTAL_SCENES-1) goToScene(currentScene+1); }
+  function prevScene() { if (currentScene > 0) goToScene(currentScene-1); }
+
+  // Auto-init scene 0 on load
+  window.addEventListener('load', () => { initScene(0); });
+
 </script>
 </body>
 </html>
