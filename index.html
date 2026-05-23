@@ -819,9 +819,8 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // ── Form submit ───────────────────────────────────────────────
-  let submissions = JSON.parse(localStorage.getItem('rescata_submissions') || '[]');
-  let count = submissions.length;
+  // ── Form submit → Google Sheets ──────────────────────────────
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycby8l5jOORSQwDgVTluDcVlYJAFktk0cPVdVaoFtzTrmGQdVH0mEj0VH1nQtV4h5ogsu/exec';
 
   function handleSubmit() {
     const nombre  = document.getElementById('nombre').value.trim();
@@ -834,15 +833,26 @@
       alert('Por favor completa los campos obligatorios.');
       return;
     }
-    const entry = { nombre, empresa, rol, volumen, email, ts: new Date().toISOString() };
-    submissions.push(entry);
-    localStorage.setItem('rescata_submissions', JSON.stringify(submissions));
-    count++;
 
-    document.getElementById('form-container').style.display = 'none';
-    document.getElementById('success-msg').style.display = 'block';
-    console.log('Registro guardado:', entry);
-    console.log('Total registros:', count);
+    const btn = document.querySelector('.btn-form');
+    btn.textContent = 'Enviando...';
+    btn.disabled = true;
+
+    fetch(SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nombre, empresa, rol, volumen, email })
+    })
+    .then(() => {
+      document.getElementById('form-container').style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+    })
+    .catch(() => {
+      btn.textContent = 'Quiero participar →';
+      btn.disabled = false;
+      alert('Hubo un problema al enviar. Intenta de nuevo en un momento.');
+    });
   }
 
   // ── Animated counter ──────────────────────────────────────────
